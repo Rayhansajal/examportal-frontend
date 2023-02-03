@@ -1,0 +1,13 @@
+.truncate {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .example-header-image {
+    background-image: url('../../../../assets/iconexam.png');
+
+    background-size: cover;
+  }
+ 

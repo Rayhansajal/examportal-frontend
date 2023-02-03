@@ -1,0 +1,50 @@
+<mat-card *ngIf="user">
+    <mat-card-header>
+    <h3>Your Profile Details</h3>
+</mat-card-header>
+    <!-- {{user | json}} -->
+    <mat-card-content>
+
+        <div class="bootstrap-wrapper">
+            <div class="container">
+                <div class="container text-center">
+                 <img class="profile-image" src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg" alt="">
+               <h1 class="mt20">{{user.firstName}} {{user.lastName}}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table text-center">
+                            <tr>
+                                <td>Username</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>UserId</td>
+                                <td>EXAM{{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>{{user.enabled?"ACTIVE":"NOT-ACTIVE"}}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+    <div class="container text-center mt20">
+    <mat-card-footer>
+        <button color="primary" mat-raised-button>Update</button>
+        <button mat-raised-button color="accent" class="ml10">SHARE</button>
+      </mat-card-footer>
+    </div>
+</mat-card>
