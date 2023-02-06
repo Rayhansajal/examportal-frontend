@@ -39,10 +39,7 @@ timer:any;
 
    this.timer=this.questions.length * 1 * 60
 
-   this.questions.forEach((q:any) => {
-    q['givenAnswer']='';
-    
-   });
+  //   
     console.log(this.questions);
     this.startTimer();
     
@@ -99,22 +96,40 @@ timer:any;
   }
 
   evalQuiz(){
-    this.isSubmit=true;
-    this.questions.forEach((q:any)=>{
-      if(q.givenAnswer==q.answer){
-        this.correctAnswers++
 
-       let marSingle= this.questions[0].quiz.maxMarks/this.questions.length
-       this.marksGot += marSingle
-      }
-      if(q.givenAnswer.trim()!=''){
-        this.attempted++
-      }
+    // call to server
+    // this.isSubmit=true;
+
+    this._question.evalQuiz(this.questions).subscribe((data:any)=>
+    {
+      console.log(data);
+      this.marksGot= data.marksGot;
+      this.correctAnswers=data.correctAnswers;
+      this.attempted=data.attempted;
+      this.isSubmit=true;
+      
+    },(error)=>{
+      console.error(error);
+    }
+   
+    
+    )
+
+    // this.questions.forEach((q:any)=>{
+    //   if(q.givenAnswer==q.answer){
+    //     this.correctAnswers++
+
+    //    let marSingle= this.questions[0].quiz.maxMarks/this.questions.length
+    //    this.marksGot += marSingle
+    //   }
+    //   if(q.givenAnswer.trim()!=''){
+    //     this.attempted++
+    //   }
      
       
-    })
-    console.log("correct:"+this.correctAnswers);
-    console.log(this.marksGot);
+    // })
+    // console.log("correct:"+this.correctAnswers);
+    // console.log(this.marksGot);
     
  
   }
