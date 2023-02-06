@@ -37,7 +37,7 @@ timer:any;
    this._question.getQuestionsOfQuizForTest(this.qid).subscribe((data:any)=>{
    this.questions=data;
 
-   this.timer=this.questions.length * 2 * 60
+   this.timer=this.questions.length * 1 * 60
 
    this.questions.forEach((q:any) => {
     q['givenAnswer']='';
